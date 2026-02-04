@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Georgia',serif;
+}
+
+body{
+  background:#2b160a;
+  color:#f7e7ce;
+  overflow:hidden;
+}
+
+/* SCREEN BASE */
+.screen{
+  display:none;
+  height:100vh;
+  width:100vw;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+  background:linear-gradient(
+    rgba(43,22,10,0.9),
+    rgba(18,8,5,0.98)
+  );
+}
+
+.active{display:flex;}
+
+h1,p{
+  animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;}
+}
+
+/* BUTTONS */
+button{
+  padding:12px 30px;
+  border-radius:30px;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  margin:10px;
+}
+
+.yes{
+  background:#caa25c;
+  color:#3b1f0f;
+}
+
+.no{
+  background:#6b2e2e;
+  color:#fff;
+  position:absolute;
+}
+
+/* WHATSAPP */
+.chat{
+  background:#075e54;
+  border-radius:12px;
+  width:90%;
+  max-width:400px;
+  padding:15px;
+}
+
+.bubble{
+  background:#dcf8c6;
+  color:#000;
+  padding:12px 16px;
+  border-radius:15px;
+  margin:10px 0;
+  width:fit-content;
+}
+
+.typing{
+  display:flex;
+  gap:6px;
+}
+
+.dot{
+  width:6px;
+  height:6px;
+  background:#fff;
+  border-radius:50%;
+  animation:blink 1.4s infinite;
+}
+
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+
+@keyframes blink{
+  0%{opacity:.2}
+  50%{opacity:1}
+  100%{opacity:.2}
+}
+
+/* ENVELOPE */
+.envelope{
+  background:#c9a26a;
+  padding:30px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#3b1f0f;
+}
+
+.letter{
+  display:none;
+  background:#fdf5e6;
+  color:#3b1f0f;
+  padding:25px;
+  border-radius:10px;
+  max-width:750px;
+  line-height:1.8;
+}
+
+/* ROSE */
+.rose{
+  font-size:80px;
+  animation:float 2s infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-20px);}
+}
+
+/* MAP */
+.map{
+  position:relative;
+  width:300px;
+  height:180px;
+  margin-top:20px;
+}
+
+.city{
+  position:absolute;
+  font-size:14px;
+}
+
+.kolkata{left:20px;top:120px;}
+.ludhiana{right:20px;top:40px;}
+
+.line{
+  position:absolute;
+  top:90px;
+  left:40px;
+  height:3px;
+  width:0;
+  background:#ff4d6d;
+  animation:draw 3s forwards;
+}
+
+@keyframes draw{
+  to{width:220px;}
+}
+
+/* FIREWORKS */
+.fireworks{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle,#ffdf00 2px,transparent 3px),
+    radial-gradient(circle,#ff4d6d 2px,transparent 3px),
+    radial-gradient(circle,#7bed9f 2px,transparent 3px);
+  background-size:120px 120px;
+  animation:spark 1s infinite linear;
+  z-index:-1;
+}
+
+@keyframes spark{
+  from{background-position:0 0;}
+  to{background-position:120px 120px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen active" id="s1">
+  <h1>Hey, you look like the rest of my life 💫</h1>
+  <button class="yes" onclick="next(2)">Yes 💍</button>
+  <button class="no" onmouseover="moveNo(this)">No 😏</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+  <div class="chat">
+    <div class="bubble">
+      Hey… I have something important to tell you ❤️
+    </div>
+    <div class="bubble typing">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+  <button onclick="next(3)">Open 💌</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen" id="s3">
+  <div class="envelope" onclick="openLetter()">Click on me 💌</div>
+
+  <div class="letter" id="letter">
+    <p>
+      <b>To my hardworking man,</b><br><br>
+
+      Listen I'm not here to waste your time.
+      I'm a date-to-marry person, and I hope you know that.<br><br>
+
+      Me?? jealousy?? on U ?? Of course,
+      no one can call you mine, U are mine and only mine.<br><br>
+
+      You'll never be unloved by me till my last breath.
+      No next love, because I promised myself that you'll be my last love
+      Becasue not a single cell of my body want another boy.<br><br>
+
+      Be Safe everyday, proud of U & i love u ❤️
+    </p>
+    <button onclick="next(4)">Next 🌹</button>
+  </div>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="screen" id="s4">
+  <div class="rose">🌹🌹🌹</div>
+  <p>
+    I will always be with u always,
+    especially in your bad & tired days.
+  </p>
+  <button onclick="next(5)">Next 💕</button>
+</div>
+
+<!-- SCREEN 5 -->
+<div class="screen" id="s5">
+  <div class="fireworks"></div>
+  <h1>
+    The Day I marry You<br>
+    will be the happiest and happiest day of my life ❤️
+  </h1>
+
+  <div class="map">
+    <div class="city kolkata">📍 Kolkata</div>
+    <div class="city ludhiana">📍 Ludhiana</div>
+    <div class="line"></div>
+  </div>
+
+  <p>30h 15m • 1,846 km</p>
+</div>
+
+<script>
+function next(n){
+  document.querySelectorAll('.screen')
+    .forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+}
+
+function moveNo(btn){
+  btn.style.left=Math.random()*80+'%';
+  btn.style.top=Math.random()*80+'%';
+}
+
+function openLetter(){
+  document.querySelector('.envelope').style.display='none';
+  document.getElementById('letter').style.display='block';
+}
+</script>
+
+</body>
+</html>
